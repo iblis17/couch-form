@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='couchForm'>
+<head>
+	<meta charset="UTF-8">
+	<title>Couch Form</title>
+	<link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" type="text/css" charset="utf-8">
+	<link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap-theme.min.css" type="text/css" charset="utf-8">
+	<script type="text/javascript" charset="utf-8" src="/bower_components/jquery/dist/jquery.min.js"> </script>
+	<script type="text/javascript" charset="utf-8" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"> </script>
+	<script type="text/javascript" charset="utf-8" src="/bower_components/angularjs/angular.min.js"> </script>
+	<script type="text/javascript" charset="utf-8" src="/app.js"> </script>
+</head>
+<body>
+	<div class="" data-ng-controller="IndexController as index">
+		<div class="jumbotron text-center">
+			<h1>Couch Form</h1>
+			<p>
+			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+			tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
+			vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
+			no sea takimata sanctus est Lorem ipsum dolor sit amet.
+			</p>
+			<button type="button" class="btn btn-primary btn-lg" 
+				data-ng-click="create.btn()">Create</button>
+			<button type="button" class="btn btn-primary btn-lg"
+				data-ng-click="list()">List</button>
+		</div>
+		<div data-ng-include="content_url"></div>
+	</div>
+</body>
+</html>
