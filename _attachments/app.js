@@ -31,7 +31,7 @@
 			},
 			btn: function(){
 				$scope.preview.list = []
-				$scope.content_url = '/create.html'
+				$scope.content_url = 'create.html'
 			},
 		}
 
