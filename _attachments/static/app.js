@@ -24,6 +24,10 @@
         templateUrl: 'list.html',
         controller: 'ListController',
       }).
+      when('/fill/:id', {
+        templateUrl: 'fill.html',
+        controller: 'FillController',
+      }).
       otherwise({
         redirectTo: '/',
       })
@@ -70,6 +74,10 @@
   })
 
   app.controller('IndexController', ['$scope', '$http',
+                 function($scope, $http){
+  }])
+
+  app.controller('FillController', ['$scope', '$http',
                  function($scope, $http){
   }])
 
