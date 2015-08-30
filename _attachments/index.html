@@ -3,24 +3,28 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Couch Form</title>
-	<link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css" type="text/css" charset="utf-8">
+	<link rel="stylesheet" href="vendor/bootstrap/dist/css/cerulean.min.css" type="text/css" charset="utf-8">
 	<link rel="stylesheet" href="static/style.css" type="text/css" charset="utf-8">
+  <link rel='stylesheet' href='vendor/angular-loading-bar/loading-bar.min.css' type='text/css' media='all' />
+
 	<script type="text/javascript" charset="utf-8" src="vendor/jquery/jquery.min.js"></script>
 	<script type="text/javascript" charset="utf-8" src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script type="text/javascript" charset="utf-8" src="vendor/angularjs/angular.min.js"></script>
-	<script type="text/javascript" charset="utf-8" src="static/app.js"> </script>
+  <script type='text/javascript' src='vendor/angular-loading-bar/loading-bar.min.js'></script>
+
+  <script type="text/javascript" charset="utf-8" src="static/app.js"> </script>
 </head>
 <body>
 	<div class="" data-ng-controller="IndexController as index">
 		<div class="jumbotron text-center">
 			<h1>Couch Form</h1>
-			<p>Build more forms</p>
-			<p>Collect more</p>
-			<p>Sleep more</p>
+			<p>Create more</p>
+			<p>Fill more</p>
+			<p>Relax more</p>
 			<button type="button" class="btn btn-primary btn-lg" 
-				data-ng-click="create.btn()">Create</button>
+              data-ng-click="create.btn()">Create</button>
 			<button type="button" class="btn btn-primary btn-lg"
-				data-ng-click="list()">List</button>
+              data-ng-click="list()">List</button>
 		</div>
 		<div data-ng-include="content_url"></div>
 	</div>
