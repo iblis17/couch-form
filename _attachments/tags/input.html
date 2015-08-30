@@ -3,7 +3,7 @@
     <div class="panel-heading">
       <div class="text-right">
         <button type="button" class="btn btn-default btn-sm"
-          data-ng-click="preview.remove($index)">
+                data-ng-click="preview.remove($index)">
           <span class="glyphicon glyphicon-remove"></span>
         </button>
       </div><!-- right -->
@@ -12,11 +12,11 @@
       <input type="text" class="form-control col-md-1"
              data-ng-model="item.label"
              data-ng-show="item.edit_label"
-             data-ng-blur="item.edit_blur()"/>
+             data-ng-blur="item.edit_blur()"
+             data-ng-enter="item.edit_blur()"/>
       <div class="form-group">
-        <h4>
-          <label data-ng-dblclick="item.edit()"
-            data-ng-hide="item.edit_label">{{ item.label }}</label>
+        <h4 data-ng-dblclick="item.edit()">
+          <label data-ng-hide="item.edit_label">{{ item.label }}</label>
         </h4>
         <input type="{{ item.type }}"
         class="form-control" />
