@@ -23,7 +23,7 @@
       when('/list', {
         templateUrl: 'list.html',
         controller: 'ListController',
-      })
+      }).
       otherwise({
         redirectTo: '/',
       })
@@ -44,6 +44,14 @@
     }
     this.edit_blur = function(){
       this.edit_label = false
+    }
+    this.to_json = function(){
+      return {
+        tag:        this.tag,
+        type:       this.type,
+        label:      this.label,
+        optional:   this.optional,
+      }
     }
   }
 
@@ -67,6 +75,14 @@
 
   app.controller('ListController', ['$scope', '$http',
                  function($scope, $http){
+    $http.get('_view/form_list').
+      then(
+        function(res){
+          $scope.rows = res.data.rows
+        },
+        function(res){
+          console.log(res.data)
+        })
   }])
 
   app.controller('CreateController', ['$scope', '$http',
@@ -77,6 +93,14 @@
       list: [],
       remove: function(index){
         this.list.splice(index, 1);
+      },
+      to_list: function(){
+        var ret = []
+
+        this.list.forEach(function(e){
+          ret.push(e.to_json())
+        })
+        return ret
       }
     }
 
@@ -92,7 +116,7 @@
         $scope.preview.list = []
       },
       save: function(){
-        var fields = []
+        var fields = $scope.preview.to_list()
         var payload = {
           title: 'Test title',
           fields: fields,

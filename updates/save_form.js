@@ -6,7 +6,7 @@ function(doc, req){
       title:      data.title || 'Untitled',
       fields:     data.fields || [],
       type:       'form',
-      create_by:  req.userCtx.user,
+      create_by:  req.userCtx.user || 'anonymous',
       _id:        req.uuid,
     }
 

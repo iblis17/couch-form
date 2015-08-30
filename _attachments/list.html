@@ -1,0 +1,12 @@
+<div class="container">
+  <div>
+    <h4 class="col-md-3">ID</h4>
+    <h4 class="col-md-6">Title</h4>
+    <h4 class="col-md-3">Create by</h4>
+  </div>
+  <div data-ng-repeat="row in rows">
+    <span class="col-md-3">{{ row.id }}</span>
+    <span class="col-md-6">{{ row.key }}</span>
+    <span class="col-md-3">{{ row.value.create_by || 'anonymous' }}</span>
+  </div>
+</div>
