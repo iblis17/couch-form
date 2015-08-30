@@ -1,12 +1,13 @@
 <div>
 	<input type="text" placeholder="label" class="form-control"
-				 data-ng-model="" data-ng-class=""/>
+				 data-ng-model="item.label" data-ng-class=""/>
 	<input
 		type="{{ item.type }}"
 		placeholder="{{ item.placeholder }}"
 		class="form-control" />
 
-	<button type="button" class="btn btn-default">
+	<button type="button" class="btn btn-default"
+		data-ng-click="preview.remove($index)">
 		<span class="glyphicon glyphicon-remove"></span>
 	</button>
 </div>

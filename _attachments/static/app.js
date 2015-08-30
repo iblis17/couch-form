@@ -11,22 +11,31 @@
     // $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest'
   }])
 
+  function FormItem(tag, type, placeholder, optional){
+    this.tag = tag
+    this.type = type
+    this.placeholder = placeholder
+    this.label = null  // For the display text
+    this.optional = optional || true
+  }
+
   app.controller('IndexController', ['$scope', '$http',
                  function($scope, $http){
     var self = this
 
     $scope.preview = {
-      list: []
+      list: [],
+      remove: function(index){
+        this.list.splice(index, 1);
+      }
     }
 
     $scope.create = {
       new: {
         text: function(){
-          $scope.preview.list.push({
-            tag: 'input',
-            type: 'text',
-            placeholder: 'Some text here',
-          })
+          $scope.preview.list.push(new FormItem(
+            'input', 'text', 'Some text here'
+          ))
         },
       },
       btn: function(){
