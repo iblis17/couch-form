@@ -24,7 +24,7 @@
         templateUrl: 'list.html',
         controller: 'ListController',
       }).
-      when('/fill/:id', {
+      when('/fill/:form_id', {
         templateUrl: 'fill.html',
         controller: 'FillController',
       }).
@@ -77,8 +77,38 @@
                  function($scope, $http){
   }])
 
-  app.controller('FillController', ['$scope', '$http',
-                 function($scope, $http){
+  app.controller('FillController', ['$scope', '$http', '$routeParams',
+                 function($scope, $http, $routeParams){
+    var form_id = $routeParams.form_id
+
+    $http.get('/form/' + form_id).
+      then(
+        function(res){
+          var data = res.data
+
+          $scope.doc = data
+          $scope.fields = data.fields
+        },
+        function(res){
+          console.log(res.data)
+        })
+
+    $scope.submit = function(){
+      var payload = {}
+
+      $scope.fields.forEach(function(e){
+        payload[e.label] = e.value
+      })
+
+      $http.post('_update/submit_form', payload).
+        then(
+          function(req){
+            console.log(req.data)
+          },
+          function(req){
+            console.log(req.data)
+          })
+    }
   }])
 
   app.controller('ListController', ['$scope', '$http',

@@ -1,0 +1,10 @@
+<div class="container">
+  <h2>{{ doc.title }}</h2>
+  <form>
+    <div data-ng-repeat="field in fields">
+      <div data-ng-include="'display/' + field.tag + '.html'"></div>
+    </div>
+  </form>
+  <button type="button" class="btn btn-primary btn-lg"
+          data-ng-click="submit()">Submit</button>
+</div>
