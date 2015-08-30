@@ -1,20 +1,20 @@
 <div>
-	<div class="btn-toolbar" role="toolbar">
-		<div class="btn-group">
-			<button type="button" class="btn btn-default active">
-				<span class="glyphicon glyphicon-plus"></span>
-			</button>
-			<button type="button" class="btn btn-default" data-ng-click="create.new.text()">text</button>
-			<button type="button" class="btn btn-default" data-ng-click="">email</button>
-			<button type="button" class="btn btn-default" data-ng-click="">number</button>
-		</div><!-- btn-group -->
-		<div class="btn-group">
-			<button type="button" class="btn btn-default">Save</button>
-		</div><!-- btn-group -->
-	</div><!-- btn-toolbar -->
-	<form class="preview">
-		<div data-ng-repeat="item in preview.list">
-			<span data-ng-include="'tags/' + item.tag + '.html'"></span>
-		</div>
-	</form>
+  <div class="btn-toolbar" role="toolbar">
+    <div class="btn-group">
+      <button type="button" class="btn btn-default active">
+        <span class="glyphicon glyphicon-plus"></span>
+      </button>
+      <button type="button" class="btn btn-default" data-ng-click="create.new.text()">text</button>
+      <button type="button" class="btn btn-default" data-ng-click="">email</button>
+      <button type="button" class="btn btn-default" data-ng-click="">number</button>
+    </div><!-- btn-group -->
+    <div class="btn-group">
+      <button type="button" class="btn btn-default">Save</button>
+    </div><!-- btn-group -->
+  </div><!-- btn-toolbar -->
+  <form class="preview">
+    <div data-ng-repeat="item in preview.list">
+      <span data-ng-include="'tags/' + item.tag + '.html'"></span>
+    </div>
+  </form>
 </div>

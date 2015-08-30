@@ -1,13 +1,26 @@
 <div>
-	<input type="text" placeholder="label" class="form-control"
-				 data-ng-model="item.label" data-ng-class=""/>
-	<input
-		type="{{ item.type }}"
-		placeholder="{{ item.placeholder }}"
-		class="form-control" />
-
-	<button type="button" class="btn btn-default"
-		data-ng-click="preview.remove($index)">
-		<span class="glyphicon glyphicon-remove"></span>
-	</button>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <div class="text-right">
+        <button type="button" class="btn btn-default btn-sm"
+          data-ng-click="preview.remove($index)">
+          <span class="glyphicon glyphicon-remove"></span>
+        </button>
+      </div><!-- right -->
+    </div><!-- .panel-heading -->
+    <div class="panel-body">
+      <input type="text" class="form-control col-md-1"
+             data-ng-model="item.label"
+             data-ng-show="item.edit_label"
+             data-ng-blur="item.edit_blur()"/>
+      <div class="form-group">
+        <h4>
+          <label data-ng-dblclick="item.edit()"
+            data-ng-hide="item.edit_label">{{ item.label }}</label>
+        </h4>
+        <input type="{{ item.type }}"
+        class="form-control" />
+      </div><!--.form-group -->
+    </div><!-- .panel-body -->
+  </div><!-- panel -->
 </div>

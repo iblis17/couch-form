@@ -11,12 +11,19 @@
     // $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest'
   }])
 
-  function FormItem(tag, type, placeholder, optional){
+  function FormItem(tag, type, label, optional){
     this.tag = tag
     this.type = type
-    this.placeholder = placeholder
-    this.label = null  // For the display text
+    this.label = label
+    this.edit_label = false
     this.optional = optional || true
+
+    this.edit = function(){
+      this.edit_label = true
+    }
+    this.edit_blur = function(){
+      this.edit_label = false
+    }
   }
 
   app.controller('IndexController', ['$scope', '$http',
@@ -34,7 +41,7 @@
       new: {
         text: function(){
           $scope.preview.list.push(new FormItem(
-            'input', 'text', 'Some text here'
+            'input', 'text', 'Description text here'
           ))
         },
       },
