@@ -14,14 +14,18 @@
     $routeProvider.
       when('/', {
         templateUrl: 'main.html',
-        controller: 'IndexController'
+        controller: 'IndexController',
       }).
       when('/create', {
         templateUrl: 'create.html',
-        controller: 'CreateController'
+        controller: 'CreateController',
       }).
+      when('/list', {
+        templateUrl: 'list.html',
+        controller: 'ListController',
+      })
       otherwise({
-        redirectTo: '/'
+        redirectTo: '/',
       })
 
       cfpLoadingBarProvider.includeSpinner = false
@@ -58,6 +62,10 @@
   })
 
   app.controller('IndexController', ['$scope', '$http',
+                 function($scope, $http){
+  }])
+
+  app.controller('ListController', ['$scope', '$http',
                  function($scope, $http){
   }])
 
