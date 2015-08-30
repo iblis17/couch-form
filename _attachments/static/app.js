@@ -11,12 +11,13 @@
     // $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest'
   }])
 
-  function FormItem(tag, type, label, optional){
+  function FormItem(tag, type, label, optional, readonly){
     this.tag = tag
     this.type = type
     this.label = label
     this.edit_label = false
     this.optional = optional || true
+    this.readonly = readonly || true
 
     this.edit = function(){
       this.edit_label = true

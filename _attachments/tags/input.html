@@ -1,12 +1,15 @@
-<div>
+<div class="container">
   <div class="panel panel-default">
     <div class="panel-heading">
-      <div class="text-right">
-        <button type="button" class="btn btn-default btn-sm"
-                data-ng-click="preview.remove($index)">
-          <span class="glyphicon glyphicon-remove"></span>
-        </button>
-      </div><!-- right -->
+      <div class="panel-title">
+        <span class="text-capitalize">{{ item.type }}</span> Field
+        <span class="pull-right">
+          <button type="button" class="btn btn-default btn-sm"
+                  data-ng-click="preview.remove($index)">
+            <span class="glyphicon glyphicon-remove"></span>
+          </button>
+        </span><!-- right -->
+      </div>
     </div><!-- .panel-heading -->
     <div class="panel-body">
       <input type="text" class="form-control col-md-1"
@@ -18,8 +21,8 @@
         <h4 data-ng-dblclick="item.edit()">
           <label data-ng-hide="item.edit_label">{{ item.label }}</label>
         </h4>
-        <input type="{{ item.type }}"
-        class="form-control" />
+        <input type="{{ item.type }}" class="form-control"
+               data-ng-readonly="item.readonly"/>
       </div><!--.form-group -->
     </div><!-- .panel-body -->
   </div><!-- panel -->
