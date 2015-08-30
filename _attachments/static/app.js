@@ -1,14 +1,30 @@
 (function(){
-  var app = angular.module('couchForm', ['angular-loading-bar'])
-  .config(['$interpolateProvider', '$httpProvider',
-          function($interpolateProvider, $httpProvider){
+  var app = angular.module('couchForm', ['angular-loading-bar', 'ngRoute'])
+  .config(['$interpolateProvider', '$httpProvider', '$routeProvider',
+          'cfpLoadingBarProvider',
+          function($interpolateProvider, $httpProvider, $routeProvider,
+                   cfpLoadingBarProvider){
     // $interpolateProvider.startSymbol('[[')
     // $interpolateProvider.endSymbol(']]')
 
-    // for django request
-    // $httpProvider.defaults.xsrfCookieName = 'csrftoken'
-    // $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken'
+    $httpProvider.defaults.xsrfCookieName = 'CouchDB-CSRF'
+    $httpProvider.defaults.xsrfHeaderName = 'X-CouchDB-CSRF'
     // $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest'
+    
+    $routeProvider.
+      when('/', {
+        templateUrl: 'main.html',
+        controller: 'IndexController'
+      }).
+      when('/create', {
+        templateUrl: 'create.html',
+        controller: 'CreateController'
+      }).
+      otherwise({
+        redirectTo: '/'
+      })
+
+      cfpLoadingBarProvider.includeSpinner = false
   }])
 
   function FormItem(tag, type, label, optional, readonly){
@@ -43,6 +59,10 @@
 
   app.controller('IndexController', ['$scope', '$http',
                  function($scope, $http){
+  }])
+
+  app.controller('CreateController', ['$scope', '$http',
+                 function($scope, $http){
     var self = this
 
     $scope.preview = {
@@ -62,8 +82,25 @@
       },
       btn: function(){
         $scope.preview.list = []
-        $scope.content_url = 'create.html'
       },
+      save: function(){
+        var fields = []
+        var payload = {
+          title: 'Test title',
+          fields: fields,
+        }
+
+        $http.post('_update/save_form', payload).
+          then(function(res){
+            console.log(res.data)
+            console.log(res.headers('X-Couch-Id'))
+            console.log(res.headers('X-Couch-Update-Newrev'))
+            console.log(res)
+          },
+          function(res){
+            console.log(res.data)
+          })
+      }
     }
 
     $scope.list = function(){
